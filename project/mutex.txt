@@ -1,0 +1,8 @@
+2023-07-18 21:09:32	4944	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-18 21:09:32	29300	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:62>	thread test end. 
+2023-07-18 21:09:32	4944	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-18 21:10:37	4064	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-18 21:10:50	24536	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:62>	thread test end. 
+2023-07-18 21:10:50	4064	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-18 21:11:23	20300	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-18 21:11:23	25940	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:62>	thread test end. 

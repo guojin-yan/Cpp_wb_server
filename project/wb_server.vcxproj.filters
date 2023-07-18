@@ -21,12 +21,45 @@
     <ClInclude Include="..\wb_server\log.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\wb_server\util.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\wb_server\singleton.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\wb_server\config.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\wb_server\thread.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\wb_server\wb_server.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\wb_server\noncopyable.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\wb_server\log.cc">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\tests\test.cc">
+      <Filter>测试文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\wb_server\util.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\wb_server\config.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\test_config.cc">
+      <Filter>测试文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\wb_server\thread.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\test_thread.cc">
       <Filter>测试文件</Filter>
     </ClCompile>
   </ItemGroup>

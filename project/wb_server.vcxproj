@@ -19,11 +19,22 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\wb_server\config.h" />
     <ClInclude Include="..\wb_server\log.h" />
+    <ClInclude Include="..\wb_server\noncopyable.h" />
+    <ClInclude Include="..\wb_server\singleton.h" />
+    <ClInclude Include="..\wb_server\thread.h" />
+    <ClInclude Include="..\wb_server\util.h" />
+    <ClInclude Include="..\wb_server\wb_server.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\tests\test.cc" />
+    <ClCompile Include="..\tests\test_config.cc" />
+    <ClCompile Include="..\tests\test_thread.cc" />
+    <ClCompile Include="..\wb_server\config.cc" />
     <ClCompile Include="..\wb_server\log.cc" />
+    <ClCompile Include="..\wb_server\thread.cc" />
+    <ClCompile Include="..\wb_server\util.cc" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -77,6 +88,16 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>C:\3rdpartylib\boost_1_82_0;C:\3rdpartylib\yaml-cpp\include;C:\3rdpartylib\pthread\Pre-built.2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\3rdpartylib\boost_1_82_0\stage\lib;C:\3rdpartylib\yaml-cpp\lib\Debug;C:\3rdpartylib\pthread\Pre-built.2\lib\x64;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)project\$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>C:\3rdpartylib\boost_1_82_0;C:\3rdpartylib\yaml-cpp\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\3rdpartylib\boost_1_82_0\stage\lib;C:\3rdpartylib\yaml-cpp\lib\Release;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)project\$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -109,12 +130,14 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;HAVE_STRUCT_TIMESPEC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\3rdpartylib\boost_1_82_0\stage\lib;C:\3rdpartylib\yaml-cpp\lib\Debug</AdditionalLibraryDirectories>
+      <AdditionalDependencies>yaml-cppd.lib;pthreadVC2.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -123,7 +146,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -131,6 +154,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\3rdpartylib\boost_1_82_0\stage\lib;C:\3rdpartylib\yaml-cpp\lib\Release</AdditionalLibraryDirectories>
+      <AdditionalDependencies>yaml-cpp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

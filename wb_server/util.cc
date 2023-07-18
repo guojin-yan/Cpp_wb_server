@@ -2,14 +2,8 @@
 
 
 
-
-#include <vector>
-#include <string>
-#include <iomanip>
-
-#include <stdio.h>
 #include <stdint.h>
-#include <sys/types.h>
+
 
 #include <thread>
 #ifdef _WIN32
