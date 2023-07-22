@@ -8,14 +8,14 @@
 
 
 
-ygj_server::Logger::ptr g_logger = YGJ_LOG_NAME("root");
+ygj_server::Logger::ptr g_logger_thread = YGJ_LOG_NAME("root");
 
 int count = 0;
 //ygj_server::RWMutex s_mutex;
 ygj_server::Mutex s_mutex;
 
 void fun1() {
-	YGJ_LOG_INFO(g_logger) << "thread_name=" << ygj_server::Thread::GetName()
+	YGJ_LOG_INFO(g_logger_thread) << "thread_name=" << ygj_server::Thread::GetName()
 	                       << " this_name=" << ygj_server::Thread::GetThis()->get_name()
 	                       << " thread_id=" << ygj_server::get_thread_id()
 	                       << " this_id=" << ygj_server::Thread::GetThis()->get_id() << std::endl;
@@ -27,16 +27,16 @@ void fun1() {
 }
 void fun2() {
 	while(true) {
-		YGJ_LOG_INFO(g_logger) << "xxxxxxxxxxxxxxxxxxxx";
+		YGJ_LOG_INFO(g_logger_thread) << "xxxxxxxxxxxxxxxxxxxx";
 	}
 }
 void fun3() {
 	while(true) {
-		YGJ_LOG_INFO(g_logger) << "====================";
+		YGJ_LOG_INFO(g_logger_thread) << "====================";
 	}
 }
-int main(int argc, char** argv) {
-	YGJ_LOG_INFO(g_logger) << "thread test begin.";
+int main3(int argc, char** argv) {
+	YGJ_LOG_INFO(g_logger_thread) << "thread test begin.";
 #ifdef _WIN32
 	YAML::Node root = YAML::LoadFile("E:\\VMwareShare\\C++高性能服务器框架\\config\\log2.yml");
 #else
@@ -46,10 +46,10 @@ int main(int argc, char** argv) {
 
 	std::vector<ygj_server::Thread::ptr> threads;
 
-	for(int i = 0; i < 2; ++i) {
-		ygj_server::Thread::ptr thread(new ygj_server::Thread(&fun2, "name_" + std::to_string((i*2))));
+	for(int i = 0; i < 1; ++i) {
+		//ygj_server::Thread::ptr thread(new ygj_server::Thread(&fun2, "name_" + std::to_string((i*2))));
 		//ygj_server::Thread::ptr thread2(new ygj_server::Thread(&fun3, "name_" + std::to_string((i*2+1))));
-		threads.push_back(thread);
+		//threads.push_back(thread);
 		//threads.push_back(thread2);
 	}
 
@@ -59,7 +59,11 @@ int main(int argc, char** argv) {
 		threads[i]->join();
 	}
 
-	YGJ_LOG_INFO(g_logger) << "thread test end.";
+
+
+
+	YGJ_LOG_INFO(g_logger_thread) << "thread test end.";
+
 	//#ifdef _WIN32
 	//	Sleep(5000);
 	//#else

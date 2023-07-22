@@ -39,6 +39,18 @@
     <ClInclude Include="..\wb_server\noncopyable.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\wb_server\mutex.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\wb_server\macro.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\wb_server\fiber.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\wb_server\scheduler.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\wb_server\log.cc">
@@ -60,6 +72,24 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\tests\test_thread.cc">
+      <Filter>测试文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\wb_server\mutex.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\test_util.cc">
+      <Filter>测试文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\wb_server\fiber.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\test_fiber.cc">
+      <Filter>测试文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\wb_server\scheduler.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\test_scheduler.cc">
       <Filter>测试文件</Filter>
     </ClCompile>
   </ItemGroup>

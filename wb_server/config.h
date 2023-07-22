@@ -14,6 +14,10 @@
 #include "yaml-cpp/yaml.h"
 
 #include "log.h"
+#include "mutex.h"
+#include "singleton.h"
+#include "thread.h"
+
 
 namespace ygj_server {
 class ConfigVarBase {
@@ -270,6 +274,7 @@ template<class T,
 		 class ToStr = LexicalCast<T, std::string> >
 class ConfigVar : public ConfigVarBase {
 public:
+	typedef RWMutex RWMutexType;
 	typedef std::shared_ptr<ConfigVar> ptr;
 
 	typedef std::function<void(const T& old_value, const T& new_value)> on_change_cb;
@@ -287,6 +292,7 @@ public:
 	std::string to_string() override {
 		try {
 			//return boost::lexical_cast<std::string>(m_val);
+			RWMutexType::ReadLock lock(m_mutex);
 			return ToStr()(m_val);
 		} catch (std::exception& e) {
 			YGJ_LOG_ERROR(YGJ_LOG_ROOT()) << "ConfigVar to string exception"
@@ -309,35 +315,50 @@ public:
 	}
 	/// @brief 获取当前参数的值
 	/// @return 当前参数的值
-	const T get_value() const { return m_val; }
+	const T get_value() {
+		RWMutexType::ReadLock lock(m_mutex);
+		return m_val;
+	}
 	/// @brief 设置当前参数的值
 	/// @param val 当前参数的值
 	void set_value(const T& val) {
-		if (val == m_val) {
-			return;
+		{
+			RWMutexType::ReadLock lock(m_mutex);
+			if (val == m_val) {
+				return;
+			}
+			for (auto& i : m_cbs) {
+				i.second(m_val, val);
+			}
 		}
-		for(auto&i:m_cbs) {
-			i.second(m_val, val);
-		}
+		RWMutexType::WriteLock lock(m_mutex);
 		m_val = val;
 	}
 	std::string get_type_name() const override{ return typeid(T).name(); }
 
-	void add_listener(uint64_t key, on_change_cb cb) {
-		m_cbs[key] = cb;
+	uint64_t add_listener(on_change_cb cb) {
+		static uint64_t s_fun_id = 0;
+		RWMutexType::WriteLock lock(m_mutex);
+		++s_fun_id;
+		m_cbs[s_fun_id] = cb;
+		return s_fun_id;
 	}
 	void del_lietener(uint64_t key) {
+		RWMutexType::WriteLock lock(m_mutex);
 		m_cbs.erase(key);
 	}
 	on_change_cb get_listener(uint64_t key) {
+		RWMutexType::ReadLock lock(m_mutex);
 		auto it = m_cbs.find(key);
 		return it == m_cbs.end() ? nullptr : it->second;
 	}
 
 	void clear_listener() {
+		RWMutexType::WriteLock lock(m_mutex);
 		m_cbs.clear();
 	}
 private:
+	RWMutexType m_mutex;
 	T m_val;
 	/// @brief 变更回调函数组
 	///	@details uint64_t key,要求唯一，一般可以用hash
@@ -348,6 +369,7 @@ private:
 /// @brief 配置类
 class Config {
 public:
+	typedef RWMutex RWMutexType;
 	typedef std::unordered_map<std::string, ConfigVarBase::ptr> ConfigValMap;
 	/// @brief 获取/创建对应参数名的配置参数
 	/// @param[in] name 配置参数名称
@@ -360,8 +382,9 @@ public:
 	template<class T>
 	static  typename ConfigVar<T>::ptr lookup(const std::string& name,
 		const T& default_value, const std::string description) {
-		auto it = get_datas().find(name);
-		if(it != get_datas().end()) {
+		RWMutexType::WriteLock lock(GetMutex());
+		auto it = GetDatas().find(name);
+		if(it != GetDatas().end()) {
 			auto tmp = std::dynamic_pointer_cast<ConfigVar<T>>(it->second);
 			if(tmp) {
 				YGJ_LOG_INFO(YGJ_LOG_ROOT()) << "lookup name = " <<
@@ -387,7 +410,7 @@ public:
 		}
 
 		typename ConfigVar<T>::ptr v(new ConfigVar<T>(name, default_value, description));
-		get_datas()[name] = v;
+		GetDatas()[name] = v;
 		return v;
 
 	}
@@ -396,8 +419,9 @@ public:
 	/// @return 返回配置参数名为name的配置参数
 	template<class T>
 	static typename ConfigVar<T>::ptr lookup(const std::string& name) {
-		auto it = get_datas().find(name);
-		if(it == get_datas().end()) {
+		RWMutexType::ReadLock lock(GetMutex());
+		auto it = GetDatas().find(name);
+		if(it == GetDatas().end()) {
 			return nullptr;
 		}
 		return std::dynamic_pointer_cast<ConfigVar<T>>(it->second);
@@ -409,11 +433,18 @@ public:
 	/// @param name 配置参数名
 	/// @return 配置参数的基类
 	static ConfigVarBase::ptr lookup_base(const std::string& name);
+
+	static void Visit(std::function<void(ConfigVarBase::ptr)> cb);
 private:
 	/// @brief 所有的配置项
-	static ConfigValMap& get_datas() {
+	static ConfigValMap& GetDatas() {
 		static ConfigValMap s_datas;
 		return s_datas;
+	}
+	static RWMutexType& GetMutex() {
+		static RWMutexType s_mutex;
+		return s_mutex;
+
 	}
 
 };

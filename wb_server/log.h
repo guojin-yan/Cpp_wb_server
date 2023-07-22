@@ -15,6 +15,7 @@
 #include <vector>
 #include <stdint.h>
 
+#include "mutex.h"
 #include "singleton.h"
 #include "thread.h"
 #include "util.h"
@@ -24,7 +25,7 @@
 	if(logger->get_level() <= level)\
 		ygj_server::LogEventWrap(ygj_server::LogEvent::ptr( new ygj_server::LogEvent(logger, level,\
 		__FILE__, __LINE__, 0, ygj_server::get_thread_id(), ygj_server::get_fiber_id(),\
-		time(0)))).get_ss()
+		time(0), ygj_server::Thread::GetName()))).get_ss()
 /// @brief 使用流式方式将日志级别debug的日志写入到logger
 #define YGJ_LOG_DEBUG(logger) YGJ_LOG_LEVEL(logger, ygj_server::LogLevel::DEBUG)
 /// @brief 使用流式方式将日志级别INFO的日志写入到logger
@@ -41,7 +42,7 @@
     if(logger->get_level() <= level) \
         ygj_server::LogEventWrap(ygj_server::LogEvent::ptr(new ygj_server::LogEvent(logger, level, \
                         __FILE__, __LINE__, 0, ygj_server::get_thread_id(),\
-                ygj_server::get_fiber_id(), time(0)))).get_event()->format(fmt, __VA_ARGS__)
+                ygj_server::get_fiber_id(), time(0), ygj_server::Thread::GetName()))).get_event()->format(fmt, __VA_ARGS__)
 /// @brief 使用格式化方式将日志级别debug的日志写入到logger
 #define YGJ_LOG_FMT_DEBUG(logger, fmt, ...) YGJ_LOG_FMT_LEVEL(logger, ygj_server::LogLevel::DEBUG, fmt, __VA_ARGS__)
 /// @brief 使用格式化方式将日志级别INFO的日志写入到logger
@@ -98,7 +99,7 @@ public:
 	/// @param[in] fiber_id 协程id
 	/// @param[in] time 日志事件(秒)
 	LogEvent(std::shared_ptr<Logger> logger, LogLevel::Level level, const char* file, int32_t line, 
-		uint32_t elapse, uint32_t thread_id, uint32_t fiber_id, uint64_t time);
+		uint32_t elapse, uint32_t thread_id, uint32_t fiber_id, uint64_t time, const std::string& thread_name);
 	/// @brief 获取文件名
 	/// @return 文件名
 	const char* get_file_name() const { return m_file; }
@@ -126,6 +127,7 @@ public:
 	/// @brief 获取日志级别
 	/// @return 日志级别
 	LogLevel::Level get_level() { return m_level; }
+	const std::string& get_thread_name() const { return m_thread_name; }
 	/// @brief 获取日志内容字符串流
 	/// @return 日志内容字符串流
 	std::stringstream& get_ss() { return m_ss; }
@@ -154,6 +156,7 @@ private:
 	uint32_t m_fiberid = 0; 
 	/// @brief 时间
 	uint64_t m_time;
+	std::string m_thread_name;
 	/// @brief 日志内容流
 	std::stringstream m_ss; 
 

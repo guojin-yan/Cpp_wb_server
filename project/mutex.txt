@@ -1,8 +1,60 @@
-2023-07-18 21:09:32	4944	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
-2023-07-18 21:09:32	29300	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:62>	thread test end. 
-2023-07-18 21:09:32	4944	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
-2023-07-18 21:10:37	4064	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
-2023-07-18 21:10:50	24536	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:62>	thread test end. 
-2023-07-18 21:10:50	4064	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
-2023-07-18 21:11:23	20300	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
-2023-07-18 21:11:23	25940	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:62>	thread test end. 
+2023-07-18 21:30:12	18880	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-18 21:32:11	19836	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-18 21:32:28	23308	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-18 21:32:28	11836	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-18 21:32:28	14880	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:62>	thread test end. 
+2023-07-18 21:32:45	22496	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-18 21:32:45	19896	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:62>	thread test end. 
+2023-07-18 21:35:54	18852	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-18 21:40:54	14248	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-18 21:40:54	7028	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:62>	thread test end. 
+2023-07-18 21:40:54	14248	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-18 21:40:54	14248	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-18 21:40:54	14248	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-18 21:49:59	24676	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-18 21:49:59	32596	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:62>	thread test end. 
+2023-07-18 21:49:59	24676	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-18 21:49:59	24676	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-18 21:49:59	24676	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-19 11:50:16	8052	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-19 11:50:16	7504	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:62>	thread test end. 
+2023-07-19 11:50:16	8052	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-19 11:50:16	8052	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-19 12:01:54	28160	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-19 12:01:54	11488	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:62>	thread test end. 
+2023-07-19 12:01:54	28160	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-19 12:01:54	28160	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-19 12:01:54	28160	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-19 12:02:48	2912	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-19 12:02:48	27980	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:62>	thread test end. 
+2023-07-19 12:02:48	2912	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-19 12:02:48	2912	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-19 20:11:33	12412	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-19 20:11:33	11832	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:62>	thread test end. 
+2023-07-19 20:11:33	12412	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-19 20:11:33	12412	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-19 20:11:33	12412	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:30>	xxxxxxxxxxxxxxxxxxxx 
+2023-07-19 20:22:47	30284	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:62>	thread test end. 
+2023-07-19 20:22:47	30284	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:65>	name=logs description=logs config typename=class std::set<struct ygj_server::LogDefine,struct std::less<struct ygj_server::LogDefine>,class std::allocator<struct ygj_server::LogDefine> > value=- name: root
+  level: INFO
+  appenders:
+    - type: FileLogAppender
+      file: mutex.txt 
+2023-07-19 20:23:14	6812	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:64>	name=logs description=logs config typename=class std::set<struct ygj_server::LogDefine,struct std::less<struct ygj_server::LogDefine>,class std::allocator<struct ygj_server::LogDefine> > value=- name: root
+  level: INFO
+  appenders:
+    - type: FileLogAppender
+      file: mutex.txt 
+2023-07-19 20:23:14	6812	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:70>	thread test end. 
+2023-07-19 20:23:21	2416	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:64>	name=logs description=logs config typename=class std::set<struct ygj_server::LogDefine,struct std::less<struct ygj_server::LogDefine>,class std::allocator<struct ygj_server::LogDefine> > value=- name: root
+  level: INFO
+  appenders:
+    - type: FileLogAppender
+      file: mutex.txt 
+2023-07-19 20:23:21	2416	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:70>	thread test end. 
+2023-07-19 20:28:19	28876	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:64>	name=logs description=logs config typename=class std::set<struct ygj_server::LogDefine,struct std::less<struct ygj_server::LogDefine>,class std::allocator<struct ygj_server::LogDefine> > value=- name: root
+  level: INFO
+  appenders:
+    - type: FileLogAppender
+      file: mutex.txt 
+2023-07-19 20:28:39	28876	0	[INFO]	[root]	<E:\VMwareShare\C++高性能服务器框架\tests\test_thread.cc:70>	thread test end. 

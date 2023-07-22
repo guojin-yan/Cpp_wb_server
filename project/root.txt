@@ -1,0 +1,45 @@
+2023-07-19 20:31:22	name=logs description=logs config typename=class std::set<struct ygj_server::LogDefine,struct std::less<struct ygj_server::LogDefine>,class std::allocator<struct ygj_server::LogDefine> > value=- name: root
+  level: INFO
+  formatter: "%d%T%m%n"
+  appenders:
+    - type: FileLogAppender
+      file: root.txt
+    - type: StdoutLogAppender
+- name: system
+  level: DEBUG
+  formatter: "%d%T%m%n"
+  appenders:
+    - type: FileLogAppender
+      file: system.txt
+      formatter: "%d%T[%p]%m%n"
+    - type: StdoutLogAppender
+2023-07-19 20:31:55	name=logs description=logs config typename=class std::set<struct ygj_server::LogDefine,struct std::less<struct ygj_server::LogDefine>,class std::allocator<struct ygj_server::LogDefine> > value=- name: root
+  level: INFO
+  formatter: "%d%T%m%n"
+  appenders:
+    - type: FileLogAppender
+      file: root.txt
+    - type: StdoutLogAppender
+- name: system
+  level: DEBUG
+  formatter: "%d%T%m%n"
+  appenders:
+    - type: FileLogAppender
+      file: system.txt
+      formatter: "%d%T[%p]%m%n"
+    - type: StdoutLogAppender
+2023-07-19 20:32:23	name=logs description=logs config typename=class std::set<struct ygj_server::LogDefine,struct std::less<struct ygj_server::LogDefine>,class std::allocator<struct ygj_server::LogDefine> > value=- name: root
+  level: INFO
+  formatter: "%d%T%m%n"
+  appenders:
+    - type: FileLogAppender
+      file: root.txt
+    - type: StdoutLogAppender
+- name: system
+  level: DEBUG
+  formatter: "%d%T%m%n"
+  appenders:
+    - type: FileLogAppender
+      file: system.txt
+      formatter: "%d%T[%p]%m%n"
+    - type: StdoutLogAppender

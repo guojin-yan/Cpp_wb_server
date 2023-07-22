@@ -8,8 +8,9 @@ namespace ygj_server {
 //Config::ConfigValMap Config::get_datas();
 
 ConfigVarBase::ptr Config::lookup_base(const std::string& name) {
-	auto it = get_datas().find(name);
-	return it == get_datas().end() ? nullptr : it->second;
+	RWMutexType::ReadLock lock(GetMutex());
+	auto it = GetDatas().find(name);
+	return it == GetDatas().end() ? nullptr : it->second;
 }
 
 static void list_all_menmber(const std::string prefix, const YAML::Node& node,
@@ -48,5 +49,14 @@ void Config::load_from_yaml(const YAML::Node& root) {
 		}
 	}
 }
+
+void Config::Visit(std::function<void(ConfigVarBase::ptr)> cb) {
+	RWMutexType::ReadLock lock(GetMutex());
+	ConfigValMap& m = GetDatas();
+	for(auto it = m.begin(); it != m.end(); ++it) {
+		cb(it->second);
+	}
+}
+
 
 }

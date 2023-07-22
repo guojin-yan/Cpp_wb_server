@@ -190,7 +190,7 @@ void test_class() {
 		YGJ_LOG_INFO(YGJ_LOG_ROOT()) << prefix  << " : size = " << m.size(); \
 	}
 
-	g_person->add_listener(10, [](const Person& old_value, const Person& new_value) {
+	g_person->add_listener([](const Person& old_value, const Person& new_value) {
 		YGJ_LOG_INFO(YGJ_LOG_ROOT()) << "old value=" << old_value.to_string() << " new_value=" <<
 			new_value.to_string();
 	});
@@ -232,6 +232,40 @@ void test_log() {
 	YGJ_LOG_INFO(system_log) << "hello system" << std::endl;
 }
 
+void test_visit() {
+	ygj_server::ConfigVar<int>::ptr g_int_value_config =
+		ygj_server::Config::lookup("system.port", (int)8080, "system port");
+	ygj_server::ConfigVar<int>::ptr g_int_valuex_config =
+		ygj_server::Config::lookup("system.port", (int)8080, "system port");
+
+	ygj_server::ConfigVar<float>::ptr g_float_value_config =
+		ygj_server::Config::lookup("system.value", (float)10.2, "system value");
+
+	ygj_server::ConfigVar<std::vector<int>>::ptr g_vector_value_config =
+		ygj_server::Config::lookup("system.int_vector", std::vector<int>{1, 2, 3}, "system int_vector");
+
+	ygj_server::ConfigVar<std::list<int>>::ptr g_list_value_config =
+		ygj_server::Config::lookup("system.int_list", std::list<int>{1, 2, 3}, "system int_list");
+	ygj_server::ConfigVar<std::set<int>>::ptr g_set_value_config =
+		ygj_server::Config::lookup("system.int_set", std::set<int>{1, 2, 3}, "system int_set");
+	ygj_server::ConfigVar<std::unordered_set<int>>::ptr g_uset_value_config =
+		ygj_server::Config::lookup("system.int_uset", std::unordered_set<int>{1, 2, 3}, "system int_uset");
+
+	ygj_server::ConfigVar<std::map<std::string, int>>::ptr g_map_value_config =
+		ygj_server::Config::lookup("system.int_map", std::map<std::string, int>{ {"k", 2}}, "system int_map");
+	ygj_server::ConfigVar<std::unordered_map<std::string, int>>::ptr g_umap_value_config =
+		ygj_server::Config::lookup("system.int_umap", std::unordered_map<std::string, int>{ {"k", 2}}, "system int_umap");
+
+
+	std::cout << "*****************************************" << std::endl;
+
+	ygj_server::Config::Visit([](ygj_server::ConfigVarBase::ptr var) {
+		YGJ_LOG_INFO(YGJ_LOG_ROOT()) << "name=" << var->get_name() << " description=" << var->get_description()
+			<< " typename=" << var->get_type_name() << " value=" << var->to_string();
+	});
+
+}
+
 int main2(int argc, char** argv) {
 	//YGJ_LOG_INFO(YGJ_LOG_ROOT()) << g_int_value_config->get_value();
 	//YGJ_LOG_INFO(YGJ_LOG_ROOT()) << g_int_value_config->to_string();
@@ -241,6 +275,9 @@ int main2(int argc, char** argv) {
 
 	//test_class();
 
-	test_log();
+	//test_log();
+
+	test_visit();
+
 	return  0;
 }

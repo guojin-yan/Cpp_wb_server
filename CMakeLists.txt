@@ -21,10 +21,13 @@ message("***", ${YAMLCPP})
 
 
 set(LIB_SRC 
-	wb_server/log.cc
-	wb_server/util.cc
 	wb_server/config.cc
+	wb_server/log.cc
+	wb_server/fiber.cc
+	wb_server/mutex.cc
+	wb_server/scheduler.cc
 	wb_server/thread.cc
+	wb_server/util.cc
 	)
 
 add_library(ygj_server SHARED ${LIB_SRC})
@@ -48,10 +51,25 @@ set(LIB_LIB
 #target_link_libraries(test_config ygj_server ${LIB_LIB})
 
 
-add_executable(test_thread tests/test_thread.cc)
-add_dependencies(test_thread ygj_server)
-force_redefine_file_macro_for_sources(test_thread)
-target_link_libraries(test_thread ygj_server ${LIB_LIB})
+#add_executable(test_thread tests/test_thread.cc)
+#add_dependencies(test_thread ygj_server)
+#force_redefine_file_macro_for_sources(test_thread)
+#target_link_libraries(test_thread ygj_server ${LIB_LIB})
+
+#add_executable(test_util tests/test_util.cc)
+#add_dependencies(test_util ygj_server)
+#force_redefine_file_macro_for_sources(test_util)
+#target_link_libraries(test_util ygj_server ${LIB_LIB})
+
+#add_executable(test_fiber tests/test_fiber.cc)
+#add_dependencies(test_fiber ygj_server)
+#force_redefine_file_macro_for_sources(test_fiber)
+#target_link_libraries(test_fiber ygj_server ${LIB_LIB})
+
+add_executable(test_scheduler tests/test_scheduler.cc)
+add_dependencies(test_scheduler ygj_server)
+force_redefine_file_macro_for_sources(test_scheduler)
+target_link_libraries(test_scheduler ygj_server ${LIB_LIB})
 
 
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)

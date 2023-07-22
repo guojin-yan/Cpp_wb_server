@@ -105,6 +105,14 @@ public:
 	}
 };
 
+class ThreadNameFormatItem : public LogFormatter::FormatItem {
+public:
+	ThreadNameFormatItem(const std::string& fmt = "") {};
+	void format(std::ostream& os, std::shared_ptr<Logger> logger, LogLevel::Level level, LogEvent::ptr evevt) override {
+		os << evevt->get_thread_name();
+	}
+};
+
 class DateTimeFormatItem : public LogFormatter::FormatItem {
 public:
 	DateTimeFormatItem(const std::string& format = "%Y-%m-%d %H:%M:%S") :m_format(format) {
@@ -171,7 +179,7 @@ private:
 };
 
 LogEvent::LogEvent(std::shared_ptr<Logger> logger, LogLevel::Level level, const char* file, int32_t line, uint32_t elapse, 
-	uint32_t thread_id, uint32_t fiber_id, uint64_t time)
+	uint32_t thread_id, uint32_t fiber_id, uint64_t time, const std::string& thread_name)
 	:m_logger(logger),
 	m_level(level),
 	m_file(file),
@@ -179,7 +187,8 @@ LogEvent::LogEvent(std::shared_ptr<Logger> logger, LogLevel::Level level, const 
 	m_elapse(elapse),
 	m_thread(thread_id),
 	m_fiberid(fiber_id),
-	m_time(time) {
+	m_time(time) ,
+	m_thread_name(thread_name){
 	
 }
 
@@ -227,7 +236,7 @@ LogFormatter::ptr LogAppender::get_formatter() {
 
 Logger::Logger(const std::string name ): m_name(name),
 m_level(LogLevel::DEBUG){
-	m_formatter.reset(new LogFormatter("%d{%Y-%m-%d %H:%M:%S}%T%t%T%F%T[%p]%T[%c]%T<%f:%l>%T%m %n"));
+	m_formatter.reset(new LogFormatter("%d{%Y-%m-%d %H:%M:%S}%T%t%T%N%T%F%T[%p]%T[%c]%T<%f:%l>%T%m %n"));
 
 }
 
@@ -366,15 +375,15 @@ void FileLogAppender::log(std::shared_ptr<Logger> logger, LogLevel::Level level,
 	
 	if (level >= m_level) {
 		uint64_t now = time(0);
-		if(now != m_last_time) {
+		if(now != m_last_time ) {
 			reopen();
 			m_last_time = now;
 		}
+		
 		MutexType::Lock lock(m_mutex);
 		if (!m_formatter->format(m_file_stream, logger, level, event)) {
 			std::cout << "error" << std::endl;
 		}
-		m_file_stream.close();
 	}
 }
 bool FileLogAppender::reopen() {
@@ -507,7 +516,7 @@ void LogFormatter::init() {
 		XX(l, LineFormatItem),              //l:行号
 		XX(T, TabFormatItem),               //T:Tab
 		XX(F, FiberIdFormatItem),           //F:协程id
-		//XX(N, ThreadNameFormatItem),        //N:线程名称
+		XX(N, ThreadNameFormatItem),        //N:线程名称
 #undef XX
 	};
 	for(auto& i : vec) {
@@ -698,7 +707,7 @@ ygj_server::ConfigVar<std::set<LogDefine> >::ptr g_log_defines =
 
 struct LogIniter {
 	LogIniter() {
-		g_log_defines->add_listener(0xF1E231,[](const std::set<LogDefine>& old_value, 
+		g_log_defines->add_listener([](const std::set<LogDefine>& old_value, 
 				const std::set<LogDefine>& new_value) {
 
 			YGJ_LOG_INFO(YGJ_LOG_ROOT()) << "on_logger_conf_changed";

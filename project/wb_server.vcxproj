@@ -20,19 +20,29 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\wb_server\config.h" />
+    <ClInclude Include="..\wb_server\fiber.h" />
     <ClInclude Include="..\wb_server\log.h" />
+    <ClInclude Include="..\wb_server\macro.h" />
+    <ClInclude Include="..\wb_server\mutex.h" />
     <ClInclude Include="..\wb_server\noncopyable.h" />
+    <ClInclude Include="..\wb_server\scheduler.h" />
     <ClInclude Include="..\wb_server\singleton.h" />
     <ClInclude Include="..\wb_server\thread.h" />
     <ClInclude Include="..\wb_server\util.h" />
     <ClInclude Include="..\wb_server\wb_server.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\tests\test_scheduler.cc" />
     <ClCompile Include="..\tests\test.cc" />
     <ClCompile Include="..\tests\test_config.cc" />
+    <ClCompile Include="..\tests\test_fiber.cc" />
     <ClCompile Include="..\tests\test_thread.cc" />
+    <ClCompile Include="..\tests\test_util.cc" />
     <ClCompile Include="..\wb_server\config.cc" />
+    <ClCompile Include="..\wb_server\fiber.cc" />
     <ClCompile Include="..\wb_server\log.cc" />
+    <ClCompile Include="..\wb_server\mutex.cc" />
+    <ClCompile Include="..\wb_server\scheduler.cc" />
     <ClCompile Include="..\wb_server\thread.cc" />
     <ClCompile Include="..\wb_server\util.cc" />
   </ItemGroup>
